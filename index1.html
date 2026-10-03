@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruchi's Baking Tools & Accessories</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#fbe8e3',
+                            200: '#f7d4cb',
+                            300: '#f0b5a6',
+                            400: '#e68a73',
+                            500: '#d95f43',
+                            600: '#b8462b',
+                            700: '#943722',
+                            800: '#732e1e',
+                            900: '#5e271a',
+                            950: '#33130d',
+                        },
+                        cream: {
+                            DEFAULT: '#FAF6F0',
+                            dark: '#EFE7DE',
+                            card: '#FFFDF9'
+                        },
+                        chocolate: {
+                            light: '#5c3a21',
+                            DEFAULT: '#3d2314',
+                            dark: '#26150b'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAF6F0;
+            color: #3d2314;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EFE7DE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b8462b;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #943722;
+        }
+        .glass-header {
+            background: rgba(255, 253, 249, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-cream text-chocolate antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-chocolate-dark via-chocolate to-chocolate-light text-cream-dark text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+        <span><i class="fa-solid fa-location-dot text-brand-400 mr-1.5 animate-bounce"></i> 4 Gopi Raw Bungalow, Chankyapuri Ghatlodia, Ahmedabad</span>
+        <span class="mx-3 hidden sm:inline">•</span>
+        <span class="block sm:inline mt-1 sm:mt-0"><i class="fa-solid fa-phone text-brand-400 mr-1.5"></i> Call / WhatsApp: <strong class="text-white">9998448566</strong></span>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-brand-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-brand-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-cake-candles text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="heading-font text-xl sm:text-2xl font-bold tracking-tight text-chocolate">Ruchi's Baking Tools</h1>
+                    <p class="text-xs text-brand-600 font-medium tracking-wider uppercase">Everything you need to bake & decorate</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-chocolate">
+                <a href="#categories" class="hover:text-brand-600 transition-colors">Categories</a>
+                <a href="#products" class="hover:text-brand-600 transition-colors">All Products</a>
+                <a href="#about" class="hover:text-brand-600 transition-colors">Contact</a>
+                <a href="https://wa.me/919998448566?text=Hi%20Ruchi,%20I%20want%20to%20order%20baking%20tools!" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Order on WhatsApp
+                </a>
+            </nav>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobileMenuBtn" class="md:hidden text-chocolate text-2xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-brand-100 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#categories" class="block font-medium text-chocolate hover:text-brand-600 py-1">Categories</a>
+            <a href="#products" class="block font-medium text-chocolate hover:text-brand-600 py-1">All Products</a>
+            <a href="#about" class="block font-medium text-chocolate hover:text-brand-600 py-1">Contact</a>
+            <a href="https://wa.me/919998448566?text=Hi%20Ruchi,%20I%20want%20to%20order%20baking%20tools!" target="_blank" class="w-full bg-brand-600 text-white text-center py-2.5 rounded-full font-medium block shadow">
+                <i class="fa-brands fa-whatsapp mr-2"></i> Order on WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-brand-100/50 via-cream to-cream py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-200/70 text-brand-900 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide">
+                        <i class="fa-solid fa-star text-amber-600"></i> Premium Quality Baking Supplies in Ahmedabad
+                    </div>
+                    <h1 class="heading-font text-4xl sm:text-6xl font-black text-chocolate-dark tracking-tight leading-tight">
+                        Ruchi's <span class="text-brand-600 italic">Baking Tools</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-chocolate/80 max-w-2xl mx-auto lg:mx-0 font-light">
+                        Everything you need to bake, decorate & present beautifully. Discover top-grade molds, sprinkles, packaging boxes, and ice-cream essentials.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#categories" class="w-full sm:w-auto bg-chocolate hover:bg-chocolate-light text-white font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-3">
+                            <span>Explore Catalog</span>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                        <a href="tel:9998448566" class="w-full sm:w-auto bg-white hover:bg-brand-50 text-chocolate border-2 border-brand-200 font-medium px-8 py-3.5 rounded-full transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-600"></i> Call 9998448566
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-300 to-brand-100 rounded-3xl transform rotate-3 filter blur-lg opacity-70 animate-pulse-slow"></div>
+                        <div class="relative bg-white p-3 rounded-3xl shadow-2xl border border-brand-100">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3]">
+                                <img id="hero-banner-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Baking tools banner" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                                <!-- Owner Edit Overlay -->
+                                <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                                    <button onclick="openImageModal('hero', 'hero-banner-img', 'Hero Banner Image')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 transform hover:scale-105 transition-all text-sm">
+                                        <i class="fa-solid fa-pen-to-square"></i> Change Banner Image
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-brand-50 rounded-2xl flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-chocolate">Ruchita Shah</h4>
+                                        <p class="text-xs text-brand-700">Proprietor</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white text-chocolate font-semibold px-3 py-1 rounded-full shadow-sm border border-brand-200">
+                                    <i class="fa-solid fa-location-dot text-brand-600 mr-1"></i> Ghatlodia, Ahmedabad
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20 mb-12">
+        <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 border border-brand-100 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="relative w-full md:w-96">
+                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-brand-400">
+                    <i class="fa-solid fa-search"></i>
+                </span>
+                <input type="text" id="searchInput" placeholder="Search any baking tool, mold, box..." class="w-full pl-11 pr-4 py-3 bg-cream rounded-xl border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm font-medium text-chocolate placeholder-chocolate/50">
+            </div>
+            <div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                <button onclick="filterCategory('all')" class="cat-pill px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-brand-600 text-white shadow-sm transition-all whitespace-nowrap">All Items</button>
+                <button onclick="filterCategory('1')" class="cat-pill px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-cream text-chocolate hover:bg-brand-100 transition-all whitespace-nowrap">01. Cake & Chocolate</button>
+                <button onclick="filterCategory('2')" class="cat-pill px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-cream text-chocolate hover:bg-brand-100 transition-all whitespace-nowrap">02. Decoration</button>
+                <button onclick="filterCategory('3')" class="cat-pill px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-cream text-chocolate hover:bg-brand-100 transition-all whitespace-nowrap">03. Packaging</button>
+                <button onclick="filterCategory('4')" class="cat-pill px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-cream text-chocolate hover:bg-brand-100 transition-all whitespace-nowrap">04. Baking & Ice-cream</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Categories & Products Section -->
+    <main id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-20">
+
+        <!-- CATEGORY 1 -->
+        <div id="category-1" class="category-section bg-white rounded-3xl shadow-xl border border-brand-100 overflow-hidden transition-all duration-300">
+            <div class="bg-gradient-to-r from-chocolate to-chocolate-light p-6 sm:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600 flex items-center justify-center text-white text-2xl shadow-inner font-bold">
+                        01
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Pamphlet Section</span>
+                        <h2 class="heading-font text-2xl sm:text-4xl font-bold">Cake & Chocolate Making</h2>
+                    </div>
+                </div>
+                <span class="bg-white/10 backdrop-blur-md text-white text-xs px-4 py-2 rounded-full border border-white/20 font-medium">
+                    <i class="fa-solid fa-boxes-stacked mr-1.5 text-brand-400"></i> <span class="cat-count-1">11</span> Products
+                </span>
+            </div>
+
+            <div class="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-cream">
+                        <img id="cat-img-1" src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=600&q=80" alt="Cake & Chocolate Making" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                            <button onclick="openImageModal('cat', 'cat-img-1', 'Section 01 Main Image')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Change Section Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-brand-50 p-4 rounded-2xl border border-brand-100 text-center">
+                        <p class="text-xs text-brand-800 font-medium">Tip: Click any product below to order directly on WhatsApp or view details!</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div id="products-grid-1" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY 2 -->
+        <div id="category-2" class="category-section bg-white rounded-3xl shadow-xl border border-brand-100 overflow-hidden transition-all duration-300">
+            <div class="bg-gradient-to-r from-chocolate to-chocolate-light p-6 sm:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600 flex items-center justify-center text-white text-2xl shadow-inner font-bold">
+                        02
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Pamphlet Section</span>
+                        <h2 class="heading-font text-2xl sm:text-4xl font-bold">Decoration & Finishing</h2>
+                    </div>
+                </div>
+                <span class="bg-white/10 backdrop-blur-md text-white text-xs px-4 py-2 rounded-full border border-white/20 font-medium">
+                    <i class="fa-solid fa-boxes-stacked mr-1.5 text-brand-400"></i> <span class="cat-count-2">8</span> Products
+                </span>
+            </div>
+
+            <div class="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-cream">
+                        <img id="cat-img-2" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80" alt="Decoration & Finishing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                            <button onclick="openImageModal('cat', 'cat-img-2', 'Section 02 Main Image')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Change Section Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-brand-50 p-4 rounded-2xl border border-brand-100 text-center">
+                        <p class="text-xs text-brand-800 font-medium">Make your cakes look professional with our edible lustres & candles.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div id="products-grid-2" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY 3 -->
+        <div id="category-3" class="category-section bg-white rounded-3xl shadow-xl border border-brand-100 overflow-hidden transition-all duration-300">
+            <div class="bg-gradient-to-r from-chocolate to-chocolate-light p-6 sm:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600 flex items-center justify-center text-white text-2xl shadow-inner font-bold">
+                        03
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Pamphlet Section</span>
+                        <h2 class="heading-font text-2xl sm:text-4xl font-bold">Packaging & Presentation</h2>
+                    </div>
+                </div>
+                <span class="bg-white/10 backdrop-blur-md text-white text-xs px-4 py-2 rounded-full border border-white/20 font-medium">
+                    <i class="fa-solid fa-boxes-stacked mr-1.5 text-brand-400"></i> <span class="cat-count-3">7</span> Products
+                </span>
+            </div>
+
+            <div class="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-cream">
+                        <img id="cat-img-3" src="https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?auto=format&fit=crop&w=600&q=80" alt="Packaging & Presentation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                            <button onclick="openImageModal('cat', 'cat-img-3', 'Section 03 Main Image')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Change Section Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-brand-50 p-4 rounded-2xl border border-brand-100 text-center">
+                        <p class="text-xs text-brand-800 font-medium">Stunning cake boxes, cavity boxes, and metallic foils for gorgeous gifting.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div id="products-grid-3" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY 4 -->
+        <div id="category-4" class="category-section bg-white rounded-3xl shadow-xl border border-brand-100 overflow-hidden transition-all duration-300">
+            <div class="bg-gradient-to-r from-chocolate to-chocolate-light p-6 sm:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600 flex items-center justify-center text-white text-2xl shadow-inner font-bold">
+                        04
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Pamphlet Section</span>
+                        <h2 class="heading-font text-2xl sm:text-4xl font-bold">Baking & Ice-cream Essentials</h2>
+                    </div>
+                </div>
+                <span class="bg-white/10 backdrop-blur-md text-white text-xs px-4 py-2 rounded-full border border-white/20 font-medium">
+                    <i class="fa-solid fa-boxes-stacked mr-1.5 text-brand-400"></i> <span class="cat-count-4">8</span> Products
+                </span>
+            </div>
+
+            <div class="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-cream">
+                        <img id="cat-img-4" src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80" alt="Baking & Ice-cream Essentials" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                            <button onclick="openImageModal('cat', 'cat-img-4', 'Section 04 Main Image')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Change Section Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-brand-50 p-4 rounded-2xl border border-brand-100 text-center">
+                        <p class="text-xs text-brand-800 font-medium">Wafer cones, measuring spoons, CMC/GMS powder, and fresh nuts.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div id="products-grid-4" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Call to Action Banner -->
+    <section class="bg-gradient-to-r from-chocolate-dark via-chocolate to-chocolate-light py-16 text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10 space-y-6">
+            <span class="bg-brand-600/80 text-white text-xs uppercase px-4 py-1.5 rounded-full font-bold tracking-wider">Visit Or Order Today</span>
+            <h2 class="heading-font text-3xl sm:text-5xl font-extrabold">Ready to Bake Something Special?</h2>
+            <p class="text-cream-dark text-base sm:text-lg max-w-2xl mx-auto font-light">
+                Reach out to Ruchita Shah for wholesale and retail baking tools in Ahmedabad. Quick response on WhatsApp!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="https://wa.me/919998448566?text=Hi%20Ruchita,%20I%20would%20like%20to%20inquire%20about%20baking%20tools." target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all flex items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Chat on WhatsApp (9998448566)
+                </a>
+                <a href="tel:9998448566" class="bg-white hover:bg-brand-50 text-chocolate font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all flex items-center gap-3">
+                    <i class="fa-solid fa-phone text-brand-600 text-xl"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-chocolate-dark text-cream-dark py-12 border-t border-chocolate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div>
+                <h3 class="heading-font text-xl font-bold text-white mb-2">Ruchi's Baking Tools</h3>
+                <p class="text-sm text-cream-dark/80 font-light">Everything you need to bake, decorate & present beautifully.</p>
+            </div>
+            <div class="text-center">
+                <p class="text-sm font-medium text-white mb-1"><i class="fa-solid fa-location-dot text-brand-400 mr-2"></i> Location</p>
+                <p class="text-xs text-cream-dark/80">4 Gopi Raw Bungalow, Chankyapuri Ghatlodia, Ahmedabad</p>
+                <p class="text-sm font-medium text-white mt-3 mb-1"><i class="fa-solid fa-phone text-brand-400 mr-2"></i> Contact</p>
+                <p class="text-xs text-cream-dark/80">Ruchita Shah: 9998448566</p>
+            </div>
+            <div class="text-md-right text-center md:text-right space-y-2">
+                <div class="text-xs text-cream-dark/60">
+                    © 2026 Ruchi's Baking Tools. All rights reserved.
+                </div>
+                <!-- SECRET TRIGGER: Click this copyright text 5 times quickly to open Owner Mode passcode prompt -->
+                <div>
+                    <button onclick="triggerSecretOwner()" class="text-[10px] text-chocolate-dark hover:text-cream-dark/40 transition-colors focus:outline-none">
+                        • Owner Access •
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PASSCODE MODAL -->
+    <div id="passcodeModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-8 shadow-2xl border border-brand-100 text-center space-y-6 relative">
+            <button onclick="closePasscodeModal()" class="absolute top-4 right-4 text-chocolate/50 hover:text-chocolate text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-2xl mx-auto flex items-center justify-center text-2xl shadow-inner">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+                <h3 class="heading-font text-2xl font-bold text-chocolate">Owner Login</h3>
+                <p class="text-xs text-chocolate/70 mt-1">Enter your passcode to customize images</p>
+            </div>
+            <form onsubmit="verifyPasscode(event)" class="space-y-4">
+                <input type="password" id="passcodeInput" placeholder="Enter 4-digit passcode" maxlength="4" class="w-full text-center tracking-widest text-xl py-3 rounded-xl bg-cream border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 font-bold text-chocolate" autofocus required>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all">
+                    Unlock Editor
+                </button>
+            </form>
+            <p class="text-[11px] text-chocolate/50">Default passcode is <strong>1234</strong> (you can change it anytime in settings).</p>
+        </div>
+    </div>
+
+    <!-- OWNER STATUS NOTIFICATION TOAST -->
+    <div id="ownerToast" class="fixed bottom-6 right-6 z-50 hidden bg-chocolate text-white px-6 py-4 rounded-2xl shadow-2xl border border-brand-500 flex items-center gap-4 animate-bounce">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white text-sm">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm">Owner Mode Active</h4>
+            <p class="text-xs text-cream-dark">Edit buttons are now visible on all images!</p>
+        </div>
+        <button onclick="lockOwnerMode()" class="ml-4 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all">
+            Lock Out
+        </button>
+    </div>
+
+    <!-- IMAGE CUSTOMIZER MODAL -->
+    <div id="imageModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-brand-100 space-y-6 relative">
+            <button onclick="closeImageModalPopup()" class="absolute top-4 right-4 text-chocolate/50 hover:text-chocolate text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <div>
+                    <h3 id="modalTitle" class="heading-font text-xl font-bold text-chocolate">Change Image</h3>
+                    <p class="text-xs text-chocolate/70">Paste any image URL or upload below</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-chocolate uppercase tracking-wider mb-2">Image URL (Direct Link)</label>
+                    <input type="url" id="imageUrlInput" placeholder="https://example.com/image.jpg" class="w-full px-4 py-3 rounded-xl bg-cream border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm font-medium text-chocolate">
+                </div>
+
+                <div class="text-center py-2">
+                    <span class="text-xs text-chocolate/50 uppercase tracking-widest font-bold">— OR UPLOAD FILE —</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-chocolate uppercase tracking-wider mb-2">Upload from Device</label>
+                    <input type="file" id="imageFileInput" accept="image/*" class="w-full text-xs text-chocolate file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer">
+                </div>
+
+                <div class="preview-container bg-cream p-3 rounded-2xl border border-brand-200 text-center">
+                    <p class="text-xs text-chocolate/60 mb-2 font-medium">Live Preview</p>
+                    <img id="imagePreview" src="" alt="Preview" class="w-32 h-32 object-cover rounded-xl mx-auto shadow-md">
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="button" onclick="closeImageModalPopup()" class="w-1/2 bg-cream hover:bg-brand-100 text-chocolate font-bold py-3 rounded-xl transition-all text-sm">
+                        Cancel
+                    </button>
+                    <button type="button" onclick="saveNewImage()" class="w-1/2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all text-sm">
+                        Save Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Complete Product Database matching the pamphlet
+        const categoriesData = {
+            1: {
+                title: "Cake & Chocolate Making",
+                products: [
+                    { id: 'p1_1', name: "CupCake moulds", desc: "High quality baking cups & silicone molds", img: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_2', name: "Chocolate moulds", desc: "Polycarbonate & silicone chocolate shapes", img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_3', name: "Spatula", desc: "Flexible silicone spatulas for smooth mixing", img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_4', name: "Dark, White and Milk Chocolate Compound", desc: "Premium baking compound slabs", img: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_5', name: "Oil based chocolate colour", desc: "Vibrant colors specially formulated for chocolates", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_6', name: "Chocolate essence", desc: "Rich aromatic food-grade essence", img: "https://images.unsplash.com/photo-1608755728615-a080e7a421b8?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_7', name: "Scrapers", desc: "Bench scrapers & comb scrapers for icing", img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_8', name: "Piping bags", desc: "Disposable and reusable piping bags", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_9', name: "Cake knives", desc: "Stainless steel serrated slicing knives", img: "https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_10', name: "Polycarbonate Mould", desc: "Professional grade rigid chocolate molds", img: "https://images.unsplash.com/photo-1582293041040-424a10abc329?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p1_11', name: "Cake Garnishing Mould", desc: "Intricate molds for stunning cake toppers", img: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=500&q=80" }
+                ]
+            },
+            2: {
+                title: "Decoration & Finishing",
+                products: [
+                    { id: 'p2_1', name: "Sprinkles", desc: "Colorful pearls, vermicelli & designer shapes", img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_2', name: "Edible pearls", desc: "Shimmering edible pearl decorations", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_3', name: "Edible lustre dust - Gold / Silver", desc: "Luxurious metallic shine for cakes", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_4', name: "Gel food colours", desc: "Concentrated vibrant gel colors", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_5', name: "Palette knives", desc: "Straight and angled stainless steel offset spatulas", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_6', name: "Piping nozzles", desc: "Russian & standard stainless steel piping tips", img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_7', name: "Cake toppers theme based", desc: "Birthday, anniversary & custom acrylic toppers", img: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p2_8', name: "All types of cake candles", desc: "Sparkler, magic, numerical & colorful candles", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=500&q=80" }
+                ]
+            },
+            3: {
+                title: "Packaging & Presentation",
+                products: [
+                    { id: 'p3_1', name: "Cake boxes (All sizes)", desc: "Sturdy corrugated & window cake boxes", img: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_2', name: "Chocolate box", desc: "Elegant gift boxes for assorted chocolates", img: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_3', name: "Cupcake paper liners (fitted cups)", desc: "Greaseproof paper cups in various designs", img: "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_4', name: "Cake base board", desc: "Golden & silver cake drums / bases", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_5', name: "Butter paper", desc: "Non-stick baking & wrapping paper sheets", img: "https://images.unsplash.com/photo-1584799015050-d1d86d5e5330?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_6', name: "Metallic wrapping foils", desc: "Shiny foils for chocolate & hamper wrapping", img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p3_7', name: "Cavity Box", desc: "Boxes with dedicated compartments for sweets & chocolates", img: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?auto=format&fit=crop&w=500&q=80" }
+                ]
+            },
+            4: {
+                title: "Baking & Ice-cream Essentials",
+                products: [
+                    { id: 'p4_1', name: "Wafer and cones", desc: "Crispy ice-cream cones and wafer rolls", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_2', name: "Measuring spoon", desc: "Precision stainless steel & plastic measuring sets", img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_3', name: "Baking CMC powder", desc: "Stabilizer and hardening agent for fondant", img: "https://images.unsplash.com/photo-1584799015050-d1d86d5e5330?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_4', name: "Gms powder", desc: "Emulsifying agent for ice-cream and baked goods", img: "https://images.unsplash.com/photo-1584799015050-d1d86d5e5330?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_5', name: "Whipped-cream", desc: "Rich dairy & non-dairy whipping cream", img: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_6', name: "Chopped nuts and dried fruit", desc: "Premium quality almonds, raisins & fruits", img: "https://images.unsplash.com/photo-1596591146748-a400f9188a8d?auto=format&fit=crop&w=500&q=80" },
+                    { id: 'p4_7', name: "Pistachios, Cashews, Cranberries, Tutti Frutti, Chocolate Chips", desc: "Assorted baking toppings & fillings", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" }
+                ]
+            }
+        };
+
+        // Load custom images from localStorage if any
+        function loadSavedImages() {
+            for (let catId in categoriesData) {
+                let savedCatImg = localStorage.getItem(`cat_img_${catId}`);
+                if (savedCatImg) {
+                    let el = document.getElementById(`cat-img-${catId}`);
+                    if (el) el.src = savedCatImg;
+                }
+                categoriesData[catId].products.forEach(p => {
+                    let savedProdImg = localStorage.getItem(`prod_img_${p.id}`);
+                    if (savedProdImg) {
+                        p.img = savedProdImg;
+                    }
+                });
+            }
+            let savedHero = localStorage.getItem('hero_banner_img');
+            if (savedHero) {
+                let hEl = document.getElementById('hero-banner-img');
+                if (hEl) hEl.src = savedHero;
+            }
+        }
+
+        // Render Products into UI
+        function renderProducts(filter = 'all', searchQuery = '') {
+            for (let catId in categoriesData) {
+                const grid = document.getElementById(`products-grid-${catId}`);
+                if (!grid) continue;
+                
+                let html = '';
+                let matchingCount = 0;
+
+                categoriesData[catId].products.forEach(p => {
+                    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                          p.desc.toLowerCase().includes(searchQuery.toLowerCase());
+                    const matchesCat = (filter === 'all' || filter === catId);
+
+                    if (matchesSearch && matchesCat) {
+                        matchingCount++;
+                        const whatsappMsg = encodeURIComponent(`Hi Ruchi, I would like to inquire about: ${p.name}`);
+                        html += `
+                            <div class="bg-cream rounded-2xl p-4 border border-brand-200 hover:border-brand-400 transition-all shadow-sm hover:shadow-md flex flex-col justify-between group relative">
+                                <div>
+                                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-3 bg-white">
+                                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        <!-- Owner Image Edit Button Overlay -->
+                                        <div class="owner-edit-ui hidden absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                                            <button onclick="openImageModal('prod', '${p.id}', '${p.name}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3 py-1.5 rounded-lg shadow-lg flex items-center gap-1.5 text-xs">
+                                                <i class="fa-solid fa-pen-to-square"></i> Change Image
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-bold text-chocolate text-sm sm:text-base mb-1">${p.name}</h4>
+                                    <p class="text-xs text-chocolate/70 font-light mb-4">${p.desc}</p>
+                                </div>
+                                <div class="flex items-center justify-between pt-2 border-t border-brand-200/60">
+                                    <span class="text-[11px] font-semibold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-md">Available</span>
+                                    <a href="https://wa.me/919998448566?text=${whatsappMsg}" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition-all shadow-sm flex items-center gap-1.5">
+                                        <i class="fa-brands fa-whatsapp"></i> Inquire
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                grid.innerHTML = html || `<div class="col-span-full py-8 text-center text-chocolate/60 text-sm">No matching items found in this category.</div>`;
+                
+                // Update badge count
+                const countBadge = document.querySelector(`.cat-count-${catId}`);
+                if (countBadge) countBadge.textContent = matchingCount;
+            }
+
+            // If filtering by specific category, hide non-matching category sections for better UX
+            for (let i = 1; i <= 4; i++) {
+                const sec = document.getElementById(`category-${i}`);
+                if (sec) {
+                    if (filter === 'all' || filter === String(i)) {
+                        sec.style.display = 'block';
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        // Filter Category Buttons
+        function filterCategory(catId) {
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-cream', 'text-chocolate');
+            });
+            event.currentTarget.classList.remove('bg-cream', 'text-chocolate');
+            event.currentTarget.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+            
+            const searchVal = document.getElementById('searchInput').value;
+            renderProducts(catId, searchVal);
+        }
+
+        // Live Search Handler
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderProducts('all', e.target.value);
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // SECRET OWNER ACCESS LOGIC (Click copyright 5 times quickly)
+        let secretClicks = 0;
+        let clickTimer = null;
+        function triggerSecretOwner() {
+            secretClicks++;
+            if (clickTimer) clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { secretClicks = 0; }, 1500);
+
+            if (secretClicks >= 5) {
+                secretClicks = 0;
+                // Check if already logged in
+                if (localStorage.getItem('owner_authenticated') === 'true') {
+                    enableOwnerMode();
+                } else {
+                    document.getElementById('passcodeModal').classList.remove('hidden');
+                }
+            }
+        }
+
+        function closePasscodeModal() {
+            document.getElementById('passcodeModal').classList.add('hidden');
+        }
+
+        function verifyPasscode(e) {
+            e.preventDefault();
+            const val = document.getElementById('passcodeInput').value;
+            if (val === '1234') { // Default passcode
+                localStorage.setItem('owner_authenticated', 'true');
+                closePasscodeModal();
+                enableOwnerMode();
+            } else {
+                alert('Incorrect passcode! Default passcode is 1234.');
+            }
+        }
+
+        function enableOwnerMode() {
+            document.querySelectorAll('.owner-edit-ui').forEach(el => el.classList.remove('hidden'));
+            document.getElementById('ownerToast').classList.remove('hidden');
+        }
+
+        function lockOwnerMode() {
+            localStorage.removeItem('owner_authenticated');
+            document.querySelectorAll('.owner-edit-ui').forEach(el => el.classList.add('hidden'));
+            document.getElementById('ownerToast').classList.add('hidden');
+        }
+
+        // Check auth on load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSavedImages();
+            renderProducts();
+            if (localStorage.getItem('owner_authenticated') === 'true') {
+                enableOwnerMode();
+            }
+        });
+
+        // IMAGE CUSTOMIZER MODAL STATE
+        let currentTargetType = '';
+        let currentTargetId = '';
+
+        function openImageModal(type, id, title) {
+            currentTargetType = type;
+            currentTargetId = id;
+            document.getElementById('modalTitle').textContent = `Change Image: ${title}`;
+            document.getElementById('imageUrlInput').value = '';
+            document.getElementById('imageFileInput').value = '';
+            
+            // Set current image as preview
+            let currentSrc = '';
+            if (type === 'hero') currentSrc = document.getElementById('hero-banner-img').src;
+            else if (type === 'cat') currentSrc = document.getElementById(`cat-img-${id}`).src;
+            else if (type === 'prod') {
+                for (let c in categoriesData) {
+                    let found = categoriesData[c].products.find(p => p.id === id);
+                    if (found) currentSrc = found.img;
+                }
+            }
+            document.getElementById('imagePreview').src = currentSrc;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeImageModalPopup() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        // Handle file input preview
+        document.getElementById('imageFileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    document.getElementById('imagePreview').src = evt.target.result;
+                    document.getElementById('imageUrlInput').value = ''; // clear url input
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('imageUrlInput').addEventListener('input', function(e) {
+            if (e.target.value.trim() !== '') {
+                document.getElementById('imagePreview').src = e.target.value;
+                document.getElementById('imageFileInput').value = ''; // clear file input
+            }
+        });
+
+        function saveNewImage() {
+            const previewSrc = document.getElementById('imagePreview').src;
+            if (!previewSrc) {
+                alert('Please provide an image URL or upload a file.');
+                return;
+            }
+
+            if (currentTargetType === 'hero') {
+                document.getElementById('hero-banner-img').src = previewSrc;
+                localStorage.setItem('hero_banner_img', previewSrc);
+            } else if (currentTargetType === 'cat') {
+                document.getElementById(`cat-img-${currentTargetId}`).src = previewSrc;
+                localStorage.setItem(`cat_img_${currentTargetId}`, previewSrc);
+            } else if (currentTargetType === 'prod') {
+                for (let c in categoriesData) {
+                    let found = categoriesData[c].products.find(p => p.id === currentTargetId);
+                    if (found) {
+                        found.img = previewSrc;
+                        localStorage.setItem(`prod_img_${currentTargetId}`, previewSrc);
+                    }
+                }
+                renderProducts();
+                if (localStorage.getItem('owner_authenticated') === 'true') {
+                    enableOwnerMode();
+                }
+            }
+
+            closeImageModalPopup();
+            alert('Image updated and saved successfully!');
+        }
+    </script>
+</body>
+</html>
